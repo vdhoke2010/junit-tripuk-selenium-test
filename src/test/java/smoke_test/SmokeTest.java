@@ -1,18 +1,13 @@
 package smoke_test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.awt.Desktop.Action;
+import java.net.URL;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.By.ByName;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -32,8 +27,14 @@ public class SmokeTest {
 	@Before
 	public void setUp() throws InterruptedException {
 
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\Rachita\\Workspace1\\Trip_uk_phase\\src\\test\\resources\\chromedriver.exe");
+		/*
+		 * System.setProperty("webdriver.chrome.driver",
+		 * "C:\\Users\\Rachita\\Workspace1\\Trip_uk_phase\\src\\test\\resources\\chromedriver.exe"
+		 * );
+		 */
+		URL url = ClassLoader.getSystemResource("chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
+		
 		driver = new ChromeDriver();
 		driver.navigate().to("https://uk.trip.com");
 		driver.manage().window().maximize();
